@@ -166,3 +166,26 @@
   }
 	
 }
+
+// More link
+
+.more {
+  @include typo('');
+  color: $black1-3;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  transition: color 0.3s;
+  // justify-content: left;
+  gap: toRem(5);
+  &::before {
+    translate: 0 toRem(1);
+    font-size: toRem(9);
+    color: $black1-1;
+  }
+  html:not([data-fls-touch]) &{
+    &:hover{
+      color: $black1-1;
+    }
+  }
+}

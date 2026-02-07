@@ -18,7 +18,7 @@
 // Footer
 @use "_footer.scss";
 // Hero
-@use "_hero.scss";
+@use "_page.scss";
 
 body {
 	font-family: "Lato", sans-serif;
@@ -46,9 +46,16 @@ body {
 // ==========================================================
 
 .page {
+	> *:not([class*='--nomargin']) {
+		@include adaptiveValue("margin-bottom", 82, 20 );
+	}
+	> *:not([class*='--nopadding']) {
+		@include adaptiveValue("padding-top", 82, 20 );
+	}
 		// .page__hero
 		&__hero {
 		}
-}
-
+		.category-banners {
+		}
+	}
 //===========================================================
