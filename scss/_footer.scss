@@ -1,0 +1,114 @@
+// Кольори
+@use "_colors.scss" as *;
+// Міксіни
+@use "_mixins.scss" as *;
+// Типографія
+@use "_typo.scss" as *;
+// Компоненти
+@use "_components.scss" as *;
+
+.footer {
+	@include typo('');
+  // .footer__container
+  &__container {
+  }
+  // .footer__body
+  &__body {
+  }
+  // .footer__bottom
+  &__bottom {
+  }
+}
+.body-footer {
+  border-top: toRem(1) solid $black1-5;
+  border-bottom: toRem(1) solid $black1-5;
+	// display: flex;
+	// flex-wrap: wrap;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(toRem(250), 100%), 1fr));
+
+	justify-content: space-between;
+
+	@include adaptiveValue("gap", 100, 30);
+	@include adaptiveValue("padding-top", 112, 35);
+	@include adaptiveValue("padding-bottom", 72, 35);
+
+  // .body-footer__column
+  &__column {
+  }
+  // .body-footer__title
+  &__title {
+		@include typo('h2-20');
+		text-transform: uppercase;
+  }
+	// .bofy-footer__button
+	&__button {
+		@media (width > toEm(577)) {
+			cursor: default;
+			&::before {
+				display: none;
+			}
+		}
+		@media (width <= toEm(577)) {
+			display: flex;
+			flex-direction: row-reverse;
+			width: 100%;
+			justify-content: space-between;
+			&::before {
+				transition: all 0.5s;
+				@include typo('h2-20');
+				[data-footer-menu-open] & { 
+					transform: rotateX(180deg)
+				}
+			}
+		}
+	}
+  // .body-footer__list
+  &__list {
+		@include adaptiveValue("margin-top", 28, 15);
+		overflow: hidden;
+		transition: all 0.5s;
+  }
+  // .body-footer__item
+  &__item {
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 28, 15)
+		}
+  }
+  // .body-footer__link
+  &__link {
+		color: $black1-3;
+		html:not([data-fls-touch]) & {
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+  }
+}
+.bottom-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center; 
+	flex-wrap: wrap;
+	gap: toRem(20);
+
+	@include adaptiveValue("padding-block", 72, 35);
+
+	@media (width <= toEm(620)) {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+  // .bottom-footer__text
+  &__text {
+		color: $black1-3;
+		text-wrap: balance;
+  }
+  // .bottom-footer__social
+  &__social {
+		
+  }
+}

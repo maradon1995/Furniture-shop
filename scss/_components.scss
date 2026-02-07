@@ -1,0 +1,168 @@
+// Кольори
+@use "_colors.scss" as *;
+//Міксіни
+@use "_mixins.scss" as *;
+//Типографія
+@use "_typo.scss" as *;
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(toRem(380), 100%), 1fr));
+  gap: toRem(36);
+}
+
+// Картка каталогу
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(32);
+  // .item__link
+
+  &__link {
+    aspect-ratio: 440 / 574;
+    background-color: $black1-7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--top {
+      align-items: flex-start;
+    }
+    &--bottom {
+      align-items: flex-end;
+    }
+    &--bottom-left {
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+    &--bottom-right {
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+    &--top-left {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    &--top-right {
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+    &--left {
+      justify-content: start;
+    }
+    &--right {
+      justify-content: end;
+    }
+  }
+
+  &__image {
+    flex-grow: 0;
+  }
+
+  // .item__body
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: toRem(12);
+  }
+
+  // .item__title
+
+  &__title {
+    text-transform: uppercase;
+  }
+
+  // .item__link-title
+
+  &__link-title {
+    html:not([data-fls-touch]) & {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // .item__rating
+
+  &__rating {
+  }
+
+  // .item__price
+
+  &__price {
+    @include typo("h2-20");
+  }
+}
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: toRem(8);
+  // .rating__item
+
+  &__item {
+    font-size: 11px;
+    &--icon-star {
+    }
+  }
+}
+
+// Жирне посилання
+
+.link-bold {
+  span {
+    @include typo("", 700);
+    text-transform: uppercase;
+    position: relative;
+    &::after {
+      content: "";
+      width: 0%;
+      transition:
+        width 0.3s,
+        left 0.3s;
+      height: toRem(2);
+      background-color: $black1-1;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+    }
+  }
+}
+
+// Соціальні мережі (Social)
+
+.social {
+  display: flex;
+	flex-wrap: wrap;
+  @include adaptiveValue("gap", 32, 10);
+  // .social__item
+  &__item {
+  }
+  // .social__link
+  &__link {
+		transition: 
+			color 0.3s,
+			scale 0.3s;
+		html:not([data-fls-touch]) &{
+		&:hover{
+			color: $black1-3;
+			scale: 1.3;
+		}
+	}
+  }
+  // .social__link--icon-s-facebook
+  &__link--icon-s-facebook {
+  }
+  // .social__link--icon-s-twitter
+  &__link--icon-s-twitter {
+  }
+  // .social__link--icon-s-instagram
+  &__link--icon-s-instagram {
+  }
+  // .social__link--icon-s-pintrest
+  &__link--icon-s-pintrest {
+  }
+	
+}

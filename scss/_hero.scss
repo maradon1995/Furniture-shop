@@ -1,0 +1,75 @@
+// Кольори
+@use "_colors.scss" as *;
+// Міксіни
+@use "_mixins.scss" as *;
+// Типографія
+@use "_typo.scss" as *;
+// Компоненти
+@use "_components.scss" as *;
+
+
+.hero {
+	position: relative;
+	aspect-ratio: 1920 / 612;
+	padding-block: toRem(20);
+		// .hero__container
+		&__container {
+			min-height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+		}
+		// .hero__body
+		&__body {
+			position: relative;
+			z-index: 2;
+			flex-basis: 50%;
+		}
+		// .hero__label
+		&__label {
+			@include typo('h2-20');
+			&:not(:last-child) {
+				@include adaptiveValue("margin-bottom", 20, 10);
+			}
+		}
+		// .hero__title
+		&__title {
+			@include adaptiveValue("font-size", 96, 30);
+			font-family: "Montserrat", sans-serif;
+			font-weight: 800;
+			small {
+				font-weight: 700;
+			}
+			&:not(:last-child) {
+				@include adaptiveValue("margin-bottom", 36, 15);
+			}
+			&::after {
+				content: "";
+				@include adaptiveValue("margin-top", 16, 8);
+				width: 60%;
+				display: block;
+				height: toRem(1);
+				background-color: $black1-1
+			}
+		}
+		// .hero__text
+		&__text {
+			@include typo('');
+			max-width: toRem(374);
+			color: $black1-3;
+		}
+		// .hero__picture
+		&__picture {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+		// .hero__imagehero__image
+		&__image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+}

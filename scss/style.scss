@@ -1,0 +1,54 @@
+@use "sass:math";
+// Скидання стилю
+@use "_reset.scss";
+// Шрифти
+@use "_fonts.scss";
+// Іконки
+@use "_icons.scss";
+// Міксини
+@use "_mixins.scss" as *;
+// Кольори
+@use "_colors.scss" as *;
+// Типографія
+@use "_typo.scss" as *;
+// Компоненти
+@use "_components.scss" as *;
+// Header
+@use "_header.scss";
+// Footer
+@use "_footer.scss";
+// Hero
+@use "_hero.scss";
+
+body {
+	font-family: "Lato", sans-serif;
+	font-weight: 500;
+	color: $black1-1;
+}
+.wrapper {
+	position: relative;
+	min-height: 100%;
+	overflow: clip;
+
+	display: flex;
+	flex-direction: column;
+}
+.wrapper > main {
+	flex-grow: 1;
+}
+
+[class*="__container"] {
+	padding-inline: toRem(15);
+	max-width: 1422px;
+	margin: 0 auto;
+}
+
+// ==========================================================
+
+.page {
+		// .page__hero
+		&__hero {
+		}
+}
+
+//===========================================================
