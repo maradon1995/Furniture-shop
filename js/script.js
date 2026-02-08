@@ -40,10 +40,10 @@ function load() {
   /* Menu burger open - close */
 
   function initFooterMenus() {
-    const footerMenus = document.querySelectorAll('.body-footer__list');
+    const footerMenus = document.querySelectorAll(".body-footer__list");
     if (footerMenus.length) {
       const matchMedia = window.matchMedia(`(width <= 36.0625em)`);
-      matchMedia.addEventListener('change', function () {
+      matchMedia.addEventListener("change", function () {
         setFooterMenus(matchMedia.matches);
       });
 
@@ -56,7 +56,7 @@ function load() {
           }
         });
       }
-      setFooterMenus()
+      setFooterMenus();
     }
   }
 
@@ -64,14 +64,25 @@ function load() {
   addTouchAttr();
 
   document.addEventListener("click", documentActions);
+  window.addEventListener('scroll', windowScroll)
+  /* func heigth header if window start scroling*/
+
+  const header = document.querySelector('.header');
+
+  function windowScroll(e) {
+    if(scrollY > 90) {
+      header.classList.add('header--scroll')
+    } else {
+      header.classList.remove('header--scroll')
+    }
+  }
 
   /* func close - open items */
 
   function documentActions(e) {
     const targetElement = e.target;
     /* for mobile */
-    if (isMobile.any()) { 
-      
+    if (isMobile.any()) {
       /* open - close sub menu items */
       if (targetElement.closest(".menu__sub-link")) {
         const currentElement = targetElement.closest(".menu__sub-link");
@@ -81,19 +92,19 @@ function load() {
       }
 
       /* open - close footer items if window width <= 577px */
-      if( targetElement.closest('.body-footer__title')) {
-        const currentTitle = targetElement.closest('.body-footer__title')
-        const currentList = currentTitle.nextElementSibling
-         if(window.innerWidth <= 577) {
+      if (targetElement.closest(".body-footer__title")) {
+        const currentTitle = targetElement.closest(".body-footer__title");
+        const currentList = currentTitle.nextElementSibling;
+        if (window.innerWidth <= 577) {
           currentTitle.toggleAttribute("data-footer-menu-open");
           if (currentTitle.hasAttribute("data-footer-menu-open")) {
-          currentList.style.cssText = ``
-          const currentListHeight = currentList.offsetHeight
-          currentList.style.cssText = `height: 0;`
-          currentList.offsetHeight
-          currentList.style.cssText = `height: ${currentListHeight}px`
+            currentList.style.cssText = ``;
+            const currentListHeight = currentList.offsetHeight;
+            currentList.style.cssText = `height: 0;`;
+            currentList.offsetHeight;
+            currentList.style.cssText = `height: ${currentListHeight}px`;
           } else {
-            currentList.style.cssText = `height: 0;`
+            currentList.style.cssText = `height: 0;`;
           }
         }
       }
@@ -102,4 +113,6 @@ function load() {
       document.documentElement.toggleAttribute("data-menu-open");
     }
   }
+
+
 }

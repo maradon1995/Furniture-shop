@@ -8,12 +8,27 @@
 @use "_components.scss" as *;
 
 .header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: $black1-8;
+  z-index: 50;
+
+  &--scroll {
+    .header__container { 
+      transition: all 0.5s;
+      min-height: toRem(70);
+    }
+  }
+
   // .header__container
   &__container {
     display: flex;
     align-items: center;
     min-height: toRem(164);
     padding-block: toRem(10);
+    transition: all 0.3s;
     @include adaptiveValue("min-height", 164, 70, 0, 1392, 670);
     @include adaptiveValue("gap", 80, 20, 0, 1392, 768);
   }
@@ -276,6 +291,7 @@
     padding: toRem(15);
     border-radius: toRem(5);
     box-shadow: toRem(1) toRem(2) toRem(5) $black1-4;
+    background-color: $black1-8;
     @media (width <= toEm(670)) {
       background-color: $black1-8;
     }
